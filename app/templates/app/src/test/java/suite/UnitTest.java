@@ -1,4 +1,4 @@
-package test;
+package suite;
 
 import org.junit.After;
 import org.junit.AfterClass;
