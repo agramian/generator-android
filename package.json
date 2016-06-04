@@ -7,7 +7,7 @@
     "url": "git+https://agramian@github.com/agramian/generator-android.git"
   },
   "keywords": [
-    "yeoman",
+    "yeoman-generator",
     "android",
     "scaffold"
   ],
