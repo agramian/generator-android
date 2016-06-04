@@ -1,5 +1,5 @@
 {
-  "name": "generator-android",
+  "name": "@agramian/generator-android",
   "version": "0.1.0",
   "description": "Android Yeoman generator",
   "repository": {
