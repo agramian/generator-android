@@ -1,0 +1,27 @@
+{
+  "name": "generator-android",
+  "version": "0.1.0",
+  "description": "Android Yeoman generator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://agramian@github.com/agramian/generator-android.git"
+  },
+  "keywords": [
+    "yeoman",
+    "android",
+    "scaffold"
+  ],
+  "author": "Abtin Gramian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agramian/generator-android/issues"
+  },
+  "homepage": "https://github.com/agramian/generator-android#readme",
+  "dependencies": {
+    "yeoman-generator": "^0.20.3"
+  },
+  "files": [
+    "app"
+  ]
+}
+
