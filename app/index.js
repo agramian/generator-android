@@ -6,10 +6,10 @@ module.exports = generators.Base.extend({
        this.templatePath('**'),
        this.destinationRoot()
      )
-     // copy and rename .gitignore
+     // copy .gitignore
      this.fs.copy(
-       this.templatePath('gitignore'),
-       this.destinationRoot('.gitignore')
+       this.templatePath('.gitignore'),
+       this.destinationPath('.gitignore')
      )
   }
 });
