@@ -34,3 +34,8 @@ build/
 
 #NDK
 obj/
+
+#Keystore files
+keystore.properties
+keystore/
+
