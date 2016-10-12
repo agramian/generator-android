@@ -1,4 +1,4 @@
-package com.example.app;
+package <%= app_id %>;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.app.R;
+import <%= app_id %>.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.app;
+package <%= app_id %>;
 
 import android.app.Application;
 
