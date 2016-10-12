@@ -32,6 +32,8 @@ module.exports = generators.Base.extend({
           ['AndroidManifest.xml', main_dir],
           ['MainActivity.java', main_src_path],
           ['MainApplication.java', main_src_path],
+          ['project_build.gradle', './', 'build.gradle'],
+          ['app_build.gradle', 'app', 'build.gradle']
         ];
         // copy dynamic
         var self = this;
@@ -39,7 +41,7 @@ module.exports = generators.Base.extend({
           self.log(pair[0], pair[1]);
           self.fs.copyTpl(
                 self.templatePath(['dynamic', pair[0]].join('/')),
-                self.destinationPath([pair[1], pair[0]].join('/')), {
+                self.destinationPath([pair[1], pair[2] != undefined ? pair[2] : pair[0]].join('/')), {
                     app_id: app_id
                 }
             );
