@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/agramian/generator-android#readme",
   "dependencies": {
-    "yeoman-generator": "^0.20.3"
+    "yeoman-generator": "^0.24.1"
   },
   "files": [
     "generators/app"
