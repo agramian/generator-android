@@ -9,10 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.concurrent.Callable;
-
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
@@ -79,12 +76,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     static Observable<String> sampleObservable() {
-        return Observable.defer(new Callable<ObservableSource<? extends String>>() {
-            @Override public ObservableSource<? extends String> call() throws Exception {
-                // Do some long running operation
-                SystemClock.sleep(5000);
-                return Observable.just("one", "two", "three", "four", "five");
-            }
+        return Observable.defer(() -> {
+            // Do some long running operation
+            SystemClock.sleep(5000);
+            return Observable.just("one", "two", "three", "four", "five");
         });
     }
 
