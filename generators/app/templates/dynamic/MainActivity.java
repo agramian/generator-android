@@ -1,5 +1,7 @@
 package <%= app_id %>;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.Snackbar;
@@ -31,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.image)
     ImageView imageView;
+
+    public static Intent newIntent(Activity activity) {
+        return new Intent(activity, MainActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -27,11 +27,12 @@ module.exports = generators.Base.extend({
         var app_id = ['com', answers.org.trim(), answers.appname.trim()].join('.');
         var main_dir = 'app/src/main';
         var main_src_path = [main_dir, 'java', 'com', answers.org.trim(), answers.appname.trim()].join('/');
-        // 2d array of file and destination folder pairs
+        // list of file, destination dir, file name (uses original file name if not provided)
         var dynamic_files = [
           ['AndroidManifest.xml', main_dir],
           ['MainActivity.java', main_src_path],
           ['MainApplication.java', main_src_path],
+          ['SplashActivity.java', main_src_path],
           ['project_build.gradle', './', 'build.gradle'],
           ['app_build.gradle', 'app', 'build.gradle']
         ];
