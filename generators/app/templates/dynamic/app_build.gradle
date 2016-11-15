@@ -78,6 +78,8 @@ dependencies {
     def roboelectricLibVer = '3.1.4'
     def rxandroidLibVer = '2.0.1'
     def rxjavaLibVer = '2.0.1'
+    def glideLibVer = '3.7.0'
+    def glideOkHttpLibVer = '1.4.0'
 
     // unit tests
     testCompile "junit:junit:${junitLibVer}"
@@ -117,4 +119,8 @@ dependencies {
     // reactive extensions for android and java
     compile "io.reactivex.rxjava2:rxandroid:${rxandroidLibVer}"
     compile "io.reactivex.rxjava2:rxjava:${rxjavaLibVer}"
+
+    // glide
+    compile "com.github.bumptech.glide:glide:${glideLibVer}"
+    compile "com.github.bumptech.glide:okhttp3-integration:${glideOkHttpLibVer}@aar"
 }

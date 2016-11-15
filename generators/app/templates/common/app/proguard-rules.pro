@@ -21,3 +21,14 @@
 
 ### Retrofit2
 -dontwarn retrofit2.Platform$Java8
+
+### retrolambda
+-dontwarn java.lang.invoke.*
+
+### glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+-keepresourcexmlelements manifest/application/meta-data@value=GlideModule

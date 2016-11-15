@@ -8,28 +8,43 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-import <%= app_id %>.R;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int MENU_SETTINGS = Menu.FIRST;
-    Toolbar toolbar;
     private final CompositeDisposable disposables = new CompositeDisposable();
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.image)
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        Glide.with(this)
+                .load("https://image.freepik.com/free-vector/android-boot-logo_634639.jpg")
+                .centerCrop()
+                .placeholder(R.drawable.placeholder_loading)
+                .error(R.drawable.placeholder_loading)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(imageView);
     }
 
     @Override
