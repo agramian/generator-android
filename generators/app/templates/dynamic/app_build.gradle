@@ -71,8 +71,10 @@ dependencies {
     def assertJLibVer = '1.7.1'
     def mockitoLibVer = '1.10.19'
     def roboelectricLibVer = '3.1.4'
+    def rxandroidLibVer = '2.0.1'
+    def rxjavaLibVer = '2.0.1'
 
-    // tests
+    // unit tests
     testCompile "junit:junit:${junitLibVer}"
     testCompile "org.assertj:assertj-core:${assertJLibVer}"
     testCompile "org.mockito:mockito-core:${mockitoLibVer}"
@@ -83,13 +85,22 @@ dependencies {
     androidTestCompile "com.android.support.test:rules:${supportTestLibVer}"
     androidTestCompile "com.android.support:support-annotations:${supportLibVer}"
 
+    // android support
     compile "com.android.support:appcompat-v7:${supportLibVer}"
     compile "com.android.support:design:${supportLibVer}"
+
+    // gson
     compile "com.google.code.gson:gson:${gsonLibVer}"
+
+    // retrofit
     compile "com.squareup.retrofit2:retrofit:${retrofitLibVer}"
     compile "com.squareup.retrofit2:converter-gson:${retrofitLibVer}"
+
+    // okhttp
     compile "com.squareup.okhttp3:okhttp:${okhttpLibVer}"
     compile "com.squareup.okhttp3:logging-interceptor:${okhttpLibVer}"
+
+    // buterknife
     compile "com.jakewharton:butterknife:${butterknifeLibVer}"
     apt "com.jakewharton:butterknife-compiler:${butterknifeLibVer}"
 
@@ -97,4 +108,8 @@ dependencies {
     debugCompile "com.squareup.leakcanary:leakcanary-android:${leakcanaryLibVer}"
     releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryLibVer}"
     testCompile "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanaryLibVer}"
+
+    // reactive extensions for android and java
+    compile "io.reactivex.rxjava2:rxandroid:${rxandroidLibVer}"
+    compile "io.reactivex.rxjava2:rxjava:${rxjavaLibVer}"
 }
