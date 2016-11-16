@@ -30,9 +30,20 @@ module.exports = generators.Base.extend({
         // list of file, destination dir, file name (uses original file name if not provided)
         var dynamic_files = [
           ['AndroidManifest.xml', main_dir],
-          ['MainActivity.java', main_src_path],
           ['MainApplication.java', main_src_path],
           ['SplashActivity.java', main_src_path],
+          ['StartActivity.java', main_src_path],
+          ['HomeActivity.java', main_src_path],
+          [['cache', 'UserCache.java'].join('/'), main_src_path],
+          [['di/component', 'AppComponent.java'].join('/'), main_src_path],
+          [['di/component', 'UserComponent.java'].join('/'), main_src_path],
+          [['di/module', 'AppModule.java'].join('/'), main_src_path],
+          [['di/module', 'UserModule.java'].join('/'), main_src_path],
+          [['di/scope', 'UserScope.java'].join('/'), main_src_path],
+          [['model', 'User.java'].join('/'), main_src_path],
+          [['model', 'UserManager.java'].join('/'), main_src_path],
+          [['ui', 'BaseActivity.java'].join('/'), main_src_path],
+          [['ui', 'BaseUserActivity.java'].join('/'), main_src_path],
           ['project_build.gradle', './', 'build.gradle'],
           ['app_build.gradle', 'app', 'build.gradle']
         ];

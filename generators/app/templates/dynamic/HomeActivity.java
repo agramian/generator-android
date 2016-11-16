@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +13,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import <%= app_id %>.ui.BaseUserActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,10 +23,11 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends BaseUserActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-    private static final int MENU_SETTINGS = Menu.FIRST;
+    private static final String TAG = HomeActivity.class.getSimpleName();
+    private static final int MENU_RXJAVA = Menu.FIRST;
+    private static final int MENU_LOGOUT = Menu.FIRST + 1;
     private final CompositeDisposable disposables = new CompositeDisposable();
 
     @BindView(R.id.toolbar)
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
 
     public static Intent newIntent(Activity activity) {
-        return new Intent(activity, MainActivity.class);
+        return new Intent(activity, HomeActivity.class);
     }
 
     @Override
@@ -56,15 +57,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.add(0, MENU_SETTINGS, 0, R.string.action_settings).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menu.add(0, MENU_RXJAVA, 0, R.string.action_rxjava_example).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menu.add(0, MENU_LOGOUT, 0, R.string.action_logout).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case MENU_SETTINGS:
+            case MENU_RXJAVA:
                 onRunSchedulerExampleButtonClicked();
+                break;
+            case MENU_LOGOUT:
+                userManager.logout();
+                startActivity(StartActivity.newIntent(HomeActivity.this));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -83,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 .subscribeWith(new DisposableObserver<String>() {
                     @Override public void onComplete() {
                         Log.d(TAG, "onComplete()");
-                        Snackbar.make(findViewById(android.R.id.content), R.string.action_settings, Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(findViewById(android.R.id.content), R.string.action_logout, Snackbar.LENGTH_LONG).show();
                     }
 
                     @Override public void onError(Throwable e) {

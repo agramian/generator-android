@@ -1,15 +1,20 @@
-package com.example.app;
+package <%= app_id %>;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
-public class SplashActivity extends AppCompatActivity {
+import <%= app_id %>.ui.BaseActivity;
+
+public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startActivity(MainActivity.newIntent(this));
+        if (userManager.isLoggedIn()) {
+            startActivity(HomeActivity.newIntent(this));
+        } else {
+            startActivity(StartActivity.newIntent(this));
+        }
         finish();
     }
 
