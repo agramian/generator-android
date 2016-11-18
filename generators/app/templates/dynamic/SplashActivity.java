@@ -1,15 +1,15 @@
 package <%= app_id %>;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 
+import <%= app_id %>.feature.home.HomeActivity;
+import <%= app_id %>.feature.start.StartActivity;
 import <%= app_id %>.ui.BaseActivity;
 
 public class SplashActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onStart() {
+        super.onStart();
         if (userManager.isLoggedIn()) {
             startActivity(HomeActivity.newIntent(this));
         } else {

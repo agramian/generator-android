@@ -12,11 +12,12 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import de.devland.esperandro.Esperandro;
+import de.devland.esperandro.serialization.GsonSerializer;
 
 @Module
-public class AppModule {
+public final class AppModule {
 
-    MainApplication application;
+    private final MainApplication application;
 
     public AppModule(MainApplication application) {
         this.application = application;
@@ -43,6 +44,7 @@ public class AppModule {
     @Provides
     @Singleton
     UserCache providesUserCache(Context context) {
+        Esperandro.setSerializer(new GsonSerializer());
         return Esperandro.getPreferences(UserCache.class, context);
     }
 

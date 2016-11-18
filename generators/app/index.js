@@ -27,33 +27,45 @@ module.exports = generators.Base.extend({
         var app_id = ['com', answers.org.trim(), answers.appname.trim()].join('.');
         var main_dir = 'app/src/main';
         var main_src_path = [main_dir, 'java', 'com', answers.org.trim(), answers.appname.trim()].join('/');
-        // list of file, destination dir, file name (uses original file name if not provided)
+        // list of source dir, file name, destination dir, destination file name (uses original file name if not provided)
         var dynamic_files = [
           ['AndroidManifest.xml', main_dir],
+          ['project_build.gradle', './', 'build.gradle'],
+          ['app_build.gradle', 'app', 'build.gradle'],
+          ['proguard-rules.pro', 'app'],
+          ['proguardTest-rules.pro', 'app'],
           ['MainApplication.java', main_src_path],
           ['SplashActivity.java', main_src_path],
-          ['StartActivity.java', main_src_path],
-          ['HomeActivity.java', main_src_path],
           [['cache', 'UserCache.java'].join('/'), main_src_path],
           [['di/component', 'AppComponent.java'].join('/'), main_src_path],
           [['di/component', 'UserComponent.java'].join('/'), main_src_path],
           [['di/module', 'AppModule.java'].join('/'), main_src_path],
           [['di/module', 'UserModule.java'].join('/'), main_src_path],
+          [['di/scope', 'FragmentScope.java'].join('/'), main_src_path],
           [['di/scope', 'UserScope.java'].join('/'), main_src_path],
+          ['feature/start/di/StartComponent.java', main_src_path],
+          ['feature/start/di/StartModule.java', main_src_path],
+          ['feature/start/StartActivity.java', main_src_path],
+          ['feature/start/StartContract.java', main_src_path],
+          ['feature/start/StartFragment.java', main_src_path],
+          ['feature/start/StartPresenter.java', main_src_path],
+          ['feature/start/StartView.java', main_src_path],
+          ['feature/home/HomeActivity.java', main_src_path],
           [['model', 'User.java'].join('/'), main_src_path],
           [['model', 'UserManager.java'].join('/'), main_src_path],
           [['ui', 'BaseActivity.java'].join('/'), main_src_path],
+          [['ui', 'BaseFragment.java'].join('/'), main_src_path],
+          [['ui', 'BasePresenter.java'].join('/'), main_src_path],
           [['ui', 'BaseUserActivity.java'].join('/'), main_src_path],
-          ['project_build.gradle', './', 'build.gradle'],
-          ['app_build.gradle', 'app', 'build.gradle']
+          [['ui', 'BaseView.java'].join('/'), main_src_path]
         ];
         // copy dynamic
         var self = this;
-        dynamic_files.forEach(function each(pair) {
-          self.log(pair[0], pair[1]);
+        dynamic_files.forEach(function each(item) {
+          self.log(item[0], item[1], item[2]);
           self.fs.copyTpl(
-                self.templatePath(['dynamic', pair[0]].join('/')),
-                self.destinationPath([pair[1], pair[2] != undefined ? pair[2] : pair[0]].join('/')), {
+                self.templatePath(['dynamic', item[0]].join('/')),
+                self.destinationPath([item[1], item[2] != undefined ? item[2] : item[0]].join('/')), {
                     app_id: app_id
                 }
             );

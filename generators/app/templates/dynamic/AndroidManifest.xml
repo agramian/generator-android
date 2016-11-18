@@ -26,12 +26,12 @@
         </activity>
 
         <activity
-            android:name=".StartActivity"
+            android:name=".feature.start.StartActivity"
             android:label="@string/start"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".HomeActivity"
+            android:name=".feature.home.HomeActivity"
             android:label="@string/home"
             android:theme="@style/AppTheme.NoActionBar" />
 

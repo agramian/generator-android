@@ -4,5 +4,6 @@
     <string name="home">Home</string>
     <string name="action_rxjava_example">RxJava Example</string>
     <string name="action_logout">Logout</string>
-    <string name="login">login</string>
+    <string name="login">Login</string>
+    <string name="error">Error</string>
 </resources>

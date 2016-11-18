@@ -1,4 +1,4 @@
-package <%= app_id %>;
+package <%= app_id %>.feature.home;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +13,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import <%= app_id %>.R;
+import <%= app_id %>.feature.start.StartActivity;
 import <%= app_id %>.ui.BaseUserActivity;
 
 import butterknife.BindView;
@@ -42,7 +44,7 @@ public class HomeActivity extends BaseUserActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         Glide.with(this)
