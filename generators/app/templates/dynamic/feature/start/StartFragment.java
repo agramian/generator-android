@@ -3,17 +3,23 @@ package <%= app_id %>.feature.start;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.widget.EditText;
 
 import <%= app_id %>.R;
 import <%= app_id %>.feature.home.HomeActivity;
 import <%= app_id %>.model.User;
 import <%= app_id %>.ui.BaseFragment;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class StartFragment extends BaseFragment implements StartContract.View {
 
     private StartContract.Presenter presenter;
+    @BindView(R.id.username)
+    EditText username;
+    @BindView(R.id.password)
+    EditText password;
 
     public static StartFragment newInstance() {
         Bundle args = new Bundle();
@@ -36,25 +42,12 @@ public class StartFragment extends BaseFragment implements StartContract.View {
 
     @Override
     public void showError() {
-        Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.error, Snackbar.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void login(String username, String password, StartContract.LoginListener listener) {
-        int randomChoice = (int) (Math.random() * 2 - 0);
-        switch (randomChoice) {
-            case 0:
-                listener.onSuccess();
-                break;
-            case 1:
-                listener.onError();
-                break;
-        }
+        Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.invalid_credentials, Snackbar.LENGTH_LONG).show();
     }
 
     @OnClick(R.id.login)
     void login() {
-        presenter.performLogin();
+        presenter.login(username.getText().toString(), password.getText().toString());
     }
 
     @Override

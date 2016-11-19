@@ -3,7 +3,7 @@ package <%= app_id %>.feature.start;
 
 import javax.inject.Inject;
 
-final class StartPresenter implements StartContract.Presenter, StartContract.LoginListener {
+final class StartPresenter implements StartContract.Presenter {
 
     private final StartContract.View view;
 
@@ -18,22 +18,16 @@ final class StartPresenter implements StartContract.Presenter, StartContract.Log
     }
 
     @Override
-    public void performLogin() {
-        view.login("", "", this);
-    }
-
-    @Override
     public void start() {
 
     }
-
     @Override
-    public void onSuccess() {
-        view.navigateToHome();
+    public void login(String username, String password) {
+        if (username.equals("test") && password.equals("test")) {
+            view.navigateToHome();
+        } else {
+            view.showError();
+        }
     }
 
-    @Override
-    public void onError() {
-        view.showError();
-    }
 }

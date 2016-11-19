@@ -6,4 +6,7 @@
     <string name="action_logout">Logout</string>
     <string name="login">Login</string>
     <string name="error">Error</string>
+    <string name="username">test</string>
+    <string name="password">test</string>
+    <string name="invalid_credentials">Invalid credentials</string>
 </resources>

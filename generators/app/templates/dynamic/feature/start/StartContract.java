@@ -12,21 +12,11 @@ public interface StartContract {
 
         void showError();
 
-        void login(String username, String password, LoginListener listener);
-
     }
 
     interface Presenter extends BasePresenter {
 
-        void performLogin();
-
-    }
-
-    interface LoginListener {
-
-        void onSuccess();
-
-        void onError();
+        void login(String username, String password);
 
     }
 
