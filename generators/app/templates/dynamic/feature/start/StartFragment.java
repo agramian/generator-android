@@ -41,6 +41,16 @@ public class StartFragment extends BaseFragment implements StartContract.View {
     }
 
     @Override
+    public void showLoading() {
+        onLoadingStarted();
+    }
+
+    @Override
+    public void hideLoading() {
+        onLoadingFinished();
+    }
+
+    @Override
     public void showError() {
         Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.invalid_credentials, Snackbar.LENGTH_LONG).show();
     }

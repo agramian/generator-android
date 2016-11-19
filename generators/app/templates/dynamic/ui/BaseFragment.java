@@ -1,6 +1,7 @@
 package <%= app_id %>.ui;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -18,10 +19,11 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements LoadingListener {
 
     @Inject
     protected UserManager userManager;
+    boolean useBaseListeners = false;
 
     private Unbinder unbinder;
 
@@ -61,6 +63,32 @@ public abstract class BaseFragment extends Fragment {
 
     protected void setupFragmentComponent() {
         getAppComponent().inject(this);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof BaseActivity) {
+            useBaseListeners = true;
+        }
+    }
+
+    private BaseActivity getBaseActivity() {
+        return (BaseActivity) getActivity();
+    }
+
+    @Override
+    public void onLoadingStarted() {
+        if (useBaseListeners && getActivity() != null) {
+            getBaseActivity().onLoadingStarted();
+        }
+    }
+
+    @Override
+    public void onLoadingFinished() {
+        if (useBaseListeners && getActivity() != null) {
+            getBaseActivity().onLoadingFinished();
+        }
     }
 
 }

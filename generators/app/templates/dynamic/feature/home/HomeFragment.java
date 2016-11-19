@@ -13,12 +13,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import <%= app_id %>.R;
 import <%= app_id %>.feature.start.StartActivity;
 import <%= app_id %>.ui.BaseFragment;
+import <%= app_id %>.ui.LoadingObserver;
 
 import butterknife.BindView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class HomeFragment extends BaseFragment implements HomeContract.View {
@@ -66,6 +66,16 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     }
 
     @Override
+    public void showLoading() {
+        onLoadingStarted();
+    }
+
+    @Override
+    public void hideLoading() {
+        onLoadingFinished();
+    }
+
+    @Override
     protected int getLayoutResId() {
         return R.layout.home_fragment;
     }
@@ -84,13 +94,15 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableObserver<String>() {
+                .subscribeWith(new LoadingObserver<String>(this) {
                     @Override public void onComplete() {
+                        super.onComplete();
                         Log.d(TAG, "onComplete()");
-                        Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.action_logout, Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.done, Snackbar.LENGTH_LONG).show();
                     }
 
                     @Override public void onError(Throwable e) {
+                        super.onError(e);
                         Log.e(TAG, "onError()", e);
                     }
 

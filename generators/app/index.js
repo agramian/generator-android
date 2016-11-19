@@ -62,7 +62,9 @@ module.exports = generators.Base.extend({
           [['ui', 'BasePresenter.java'].join('/'), main_src_path],
           [['ui', 'BaseUserActivity.java'].join('/'), main_src_path],
           [['ui', 'BaseUserFragment.java'].join('/'), main_src_path],
-          [['ui', 'BaseView.java'].join('/'), main_src_path]
+          [['ui', 'BaseView.java'].join('/'), main_src_path],
+          [['ui', 'LoadingListener.java'].join('/'), main_src_path],
+          [['ui', 'LoadingObserver.java'].join('/'), main_src_path]
         ];
         // copy dynamic
         var self = this;

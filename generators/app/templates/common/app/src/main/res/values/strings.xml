@@ -9,4 +9,6 @@
     <string name="username">test</string>
     <string name="password">test</string>
     <string name="invalid_credentials">Invalid credentials</string>
+    <string name="loading">Loading</string>
+    <string name="done">Done</string>
 </resources>
