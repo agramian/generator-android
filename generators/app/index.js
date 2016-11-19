@@ -49,14 +49,19 @@ module.exports = generators.Base.extend({
           ['feature/start/StartContract.java', main_src_path],
           ['feature/start/StartFragment.java', main_src_path],
           ['feature/start/StartPresenter.java', main_src_path],
-          ['feature/start/StartView.java', main_src_path],
+          ['feature/home/di/HomeComponent.java', main_src_path],
+          ['feature/home/di/HomeModule.java', main_src_path],
           ['feature/home/HomeActivity.java', main_src_path],
+          ['feature/home/HomeContract.java', main_src_path],
+          ['feature/home/HomeFragment.java', main_src_path],
+          ['feature/home/HomePresenter.java', main_src_path],
           [['model', 'User.java'].join('/'), main_src_path],
           [['model', 'UserManager.java'].join('/'), main_src_path],
           [['ui', 'BaseActivity.java'].join('/'), main_src_path],
           [['ui', 'BaseFragment.java'].join('/'), main_src_path],
           [['ui', 'BasePresenter.java'].join('/'), main_src_path],
           [['ui', 'BaseUserActivity.java'].join('/'), main_src_path],
+          [['ui', 'BaseUserFragment.java'].join('/'), main_src_path],
           [['ui', 'BaseView.java'].join('/'), main_src_path]
         ];
         // copy dynamic
