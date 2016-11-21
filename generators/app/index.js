@@ -25,8 +25,10 @@ module.exports = generators.Base.extend({
         )
         // vars from answers
         var app_id = ['com', answers.org.trim(), answers.appname.trim()].join('.');
+        var src_dir = 'app/src';
         var main_dir = 'app/src/main';
         var main_src_path = [main_dir, 'java', 'com', answers.org.trim(), answers.appname.trim()].join('/');
+        var test_android_mock_path = [src_dir, 'androidTestMock', 'java', 'com', answers.org.trim(), answers.appname.trim()].join('/');
         // list of source dir, file name, destination dir, destination file name (uses original file name if not provided)
         var dynamic_files = [
           ['AndroidManifest.xml', main_dir],
@@ -64,7 +66,9 @@ module.exports = generators.Base.extend({
           [['ui', 'BaseUserFragment.java'].join('/'), main_src_path],
           [['ui', 'BaseView.java'].join('/'), main_src_path],
           [['ui', 'LoadingListener.java'].join('/'), main_src_path],
-          [['ui', 'LoadingObserver.java'].join('/'), main_src_path]
+          [['ui', 'LoadingObserver.java'].join('/'), main_src_path],
+          ['tests/androidTestMock/feature/home/HomeScreenTest.java', test_android_mock_path, 'feature/home/HomeScreenTest.java'],
+          ['tests/androidTestMock/feature/start/StartScreenTest.java', test_android_mock_path, 'feature/start/StartScreenTest.java']
         ];
         // copy dynamic
         var self = this;
