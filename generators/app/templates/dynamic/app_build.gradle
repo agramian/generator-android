@@ -11,7 +11,7 @@ def keystoreProperties = new Properties()
 // Load your keystore.properties file into the keystoreProperties object.
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
-def releasePhase = "alpha"
+def releasePhase = "pre_alpha"
 
 android {
     signingConfigs {
